@@ -22,8 +22,11 @@ public class UIManager : MonoBehaviour
         {
             _instance = this;
         }
+    }
 
-        DontDestroyOnLoad(this);
+    private void OnDestroy()
+    {
+        _instance = null;
     }
 
     private void Start()
@@ -44,6 +47,4 @@ public class UIManager : MonoBehaviour
     {
         susBarHandler.susScore(scoreUpdate);
     }
-
-    
 }
