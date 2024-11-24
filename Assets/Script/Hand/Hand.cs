@@ -5,12 +5,30 @@ using UnityEngine.UIElements;
 
 public class Hand : MonoBehaviour
 {
+
     private static Hand _instance;
-    [SerializeField]Camera _camera;
-    [SerializeField]GameObject jatuh;
+    [SerializeField] Camera _camera;
+    [SerializeField] GameObject[] jatuh;
+    [SerializeField] GameObject jat;
+    [SerializeField] int at;
+    public Customer[] customers;
+    public Customer[] Ncustomers;
+    [SerializeField] int current = 0;
+    [SerializeField] bool is_endless;
+    [SerializeField] Item hand;
+    [SerializeField] GameObject OnHand;
+    [SerializeField] SpriteRenderer HandRenderer;
+    [SerializeField] bool full;
+    [SerializeField] Box Box;
+    [SerializeField] int Ntype=7;
+    [SerializeField] int itype=8;
+    [SerializeField]Loader loader;
+    public bool done=false;
+    public int stage=1;
     public static Hand Instance { get { return _instance; } }
     private void Awake()
     {
+
         if (_instance != null && _instance != this)
         {
             Destroy(this.gameObject);
@@ -20,40 +38,51 @@ public class Hand : MonoBehaviour
             _instance = this;
         }
     }
+    private void Start()
+    {
+        jatuh=new GameObject[10];
+        for (int i = 0; i < 10; i++) 
+        {
+            jatuh[i]=Instantiate(jat,transform);
+        }
+        OnHand.SetActive(false);
+        NewDay();
+    }
+    public void NewDay() 
+    {
+        stage++;
+        if (is_endless) { Load(stage); } else { StageLoad(stage); }
+    }
     private void OnDestroy()
     {
         _instance = null;
     }
-    [SerializeField]Item hand;
-    [SerializeField]Transform OnHand;
-    Sprite spriteImage;
-    [SerializeField] SpriteRenderer spriteRenderer;
-    [SerializeField] bool full;
+    
     public void OnHandChange(Item item) 
     {
         hand = item;
-        spriteImage = hand.sprite;
-        spriteRenderer.sprite = spriteImage;
-        spriteRenderer.color = Color.white;
-        //spriteRenderer.color=Color.clear;
+        HandRenderer.sprite = hand.sprite; 
+        HandRenderer.color = Color.white;
+        OnHand.SetActive(true);
     }
     private void FixedUpdate()
     {
        
         var mouseWorldPos = _camera.ScreenToWorldPoint(Input.mousePosition);
         mouseWorldPos.z = 0;    
-        OnHand.position =mouseWorldPos;
+        OnHand.transform.position =mouseWorldPos;
 
     }
     private void Update() 
     {
-        HandleChange();    
+        HandleChange();
+        HandleClose();
     }
     void HandleChange() 
     {
         if (Input.GetButtonDown("Fire1")) 
         {
-            RaycastHit2D hit = Physics2D.Raycast(_camera.transform.position,OnHand.position);
+            RaycastHit2D hit = Physics2D.Raycast(OnHand.transform.position-Vector3.back*2,OnHand.transform.position + Vector3.back * 2);
             if (hit) 
             {
                 if (hit.collider.TryGetComponent<Tray>(out Tray T)) 
@@ -67,11 +96,82 @@ public class Hand : MonoBehaviour
         {
             if (full) 
             {
-            full = false;
-            jatuh.SetActive(true);
+            
+            jatuh[at].GetComponent<Jatuh>().Item = hand;
+                jatuh[at].transform.position=OnHand.transform.position;
+            jatuh[at].SetActive(true);
+                at += 1;
+                if (at > 9) at = 0;
+                full = false;
+            OnHand.SetActive(false);
             }
-
-
         }
     }
+    public void ItemEnter(Item a) 
+    {
+        if(a.Normal)
+            customers[current].items[a.ItemInt]--;
+        else
+            customers[current].Nitems[a.ItemInt]--;
+    }
+    void Load(int day) 
+    {
+        loader.Change(10+3*stage/10,5+stage/5,1,1+stage/5,1,1+stage/5);
+        current = 0;
+        StartCoroutine(wait());
+    }
+    void StageLoad(int day) 
+    {
+    }
+    void HandleClose() 
+    {
+        if (Input.GetButtonDown("Jump")&&!Box.loading) 
+        {
+            Box.Close();
+        if (current +1 < customers.Length)
+        {
+            current = current + 1;
+        }
+        else 
+        {
+            done = true;
+            CheckScore();
+
+        }
+        }
+
+    }
+    void CheckScore() 
+    {
+        
+        for (int i = 0; i < customers.Length; i++) 
+        {
+            bool wrong1 = false;
+            bool wrong2 = false;
+            for (int j = 0; j < itype ; j++) 
+            {
+                if (customers[i].items[j] != 0) { wrong1 = true;break; }
+                
+            }
+            for (int j = 0; j < Ntype; j++)
+            {
+                if (customers[i].Nitems[j] != 0) { wrong2 = true; break; }
+                
+            }
+            Gamemanager.Instance.Hasil(wrong1, wrong2);
+        }
+    }
+    IEnumerator wait()
+    {
+        while (customers == null)
+        {
+            yield return 0.1f;
+        }
+    }
+}
+public struct Customer 
+{
+    public string name;
+    public int[] items;
+    public int[] Nitems;
 }

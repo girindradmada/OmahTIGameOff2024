@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: item 5
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 57f7e750d1b614640b345dfda2cb8149, type: 3}
-  ItemInt: 0
-  TheName: 
-  Normal: 0
+  ItemInt: 5
+  TheName: Ball
+  Normal: 1
