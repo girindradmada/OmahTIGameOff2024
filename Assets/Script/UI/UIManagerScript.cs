@@ -13,6 +13,8 @@ public class UIManager : MonoBehaviour
     public static SusBarHandler susBarHandler;
     public static float susAmount = 0;
 
+    public static int[] drugOrderAmount;
+
     private void Awake()
     {
         if(_instance)
@@ -36,6 +38,12 @@ public class UIManager : MonoBehaviour
 
         susBar = GameObject.Find("Sus Bar");
         susBarHandler = susBar.GetComponent<SusBarHandler>();
+
+        drugOrderAmount = new int[5];
+        for(int i = 0; i < drugOrderAmount.Length; i++)
+        {
+            drugOrderAmount[i] = 0;
+        }
     }
 
     public static void creditUpdate(float scoreUpdate)
@@ -47,4 +55,6 @@ public class UIManager : MonoBehaviour
     {
         susBarHandler.susScore(scoreUpdate);
     }
+
+
 }
