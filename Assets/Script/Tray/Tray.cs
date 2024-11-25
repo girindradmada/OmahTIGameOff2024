@@ -7,9 +7,7 @@ public class Tray : MonoBehaviour
     [SerializeField] Item Item;
     public void Change()
     {
-
         Hand.Instance.OnHandChange(Item);
-        Debug.Log("sa");
     }
     
 }

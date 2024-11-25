@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: item 2
   m_EditorClassIdentifier: 
   sprite: {fileID: 21300000, guid: 6afef692484b4d24fa6047cca7189bd7, type: 3}
-  ItemInt: 0
-  TheName: 
-  Normal: 0
+  ItemInt: 2
+  TheName: Robot
+  Normal: 1
