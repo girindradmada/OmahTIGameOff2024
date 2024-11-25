@@ -11,7 +11,7 @@ public class Jatuh : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (gameObject.transform.position.y < -5) 
+        if (gameObject.transform.position.y < -20) 
         {
         gameObject.SetActive(false);
         }

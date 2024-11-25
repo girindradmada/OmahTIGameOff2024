@@ -14,7 +14,7 @@ public class Hand : MonoBehaviour
     public Customer[] customers;
     public Customer[] Ncustomers;
     [SerializeField] int current = 0;
-    [SerializeField] bool is_endless;
+    public bool is_endless;
     [SerializeField] Item hand;
     [SerializeField] GameObject OnHand;
     [SerializeField] SpriteRenderer HandRenderer;
@@ -46,12 +46,15 @@ public class Hand : MonoBehaviour
             jatuh[i]=Instantiate(jat,transform);
         }
         OnHand.SetActive(false);
+        stage = -1;
+        current = 0;
         NewDay();
     }
     public void NewDay() 
     {
         stage++;
-        if (is_endless) { Load(stage); } else { StageLoad(stage); }
+        if (is_endless) { Load(stage); } 
+        else { StageLoad(); }
     }
     private void OnDestroy()
     {
@@ -96,13 +99,7 @@ public class Hand : MonoBehaviour
         {
             if (full) 
             {
-            
-            jatuh[at].GetComponent<Jatuh>().Item = hand;
-                jatuh[at].transform.position=OnHand.transform.position;
-            jatuh[at].SetActive(true);
-                at += 1;
-                if (at > 9) at = 0;
-                full = false;
+                HandleJatuh(hand);
             OnHand.SetActive(false);
             }
         }
@@ -117,11 +114,12 @@ public class Hand : MonoBehaviour
     void Load(int day) 
     {
         loader.Change(10+3*stage/10,5+stage/5,1,1+stage/5,1,1+stage/5);
-        current = 0;
-        StartCoroutine(wait());
+        StartCoroutine(wait(customers));
     }
-    void StageLoad(int day) 
+    void StageLoad() 
     {
+        customers = Gamemanager.Instance.CustomerScripO.GetCustomer(false); ;
+        Ncustomers = Gamemanager.Instance.CustomerScripO.GetCustomer(true);
     }
     void HandleClose() 
     {
@@ -136,7 +134,6 @@ public class Hand : MonoBehaviour
         {
             done = true;
             CheckScore();
-
         }
         }
 
@@ -161,12 +158,21 @@ public class Hand : MonoBehaviour
             Gamemanager.Instance.Hasil(wrong1, wrong2);
         }
     }
-    IEnumerator wait()
+    IEnumerator wait(Customer[] a)
     {
-        while (customers == null)
+        while (a == null)
         {
             yield return 0.1f;
         }
+    }
+    public void HandleJatuh(Item hand) 
+    {
+        jatuh[at].GetComponent<Jatuh>().Item = hand;
+        jatuh[at].transform.position = OnHand.transform.position;
+        jatuh[at].SetActive(true);
+        at += 1;
+        if (at > 9) at = 0;
+        full = false;
     }
 }
 public struct Customer 

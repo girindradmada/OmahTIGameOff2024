@@ -12,6 +12,8 @@ public class Gamemanager : MonoBehaviour
     public int imistake;
     public int Nmistake;
     public Nbox Nbox;
+    public SOCust CustomerScripO;
+    public bool is_seen;
     private void Awake()
     {
 
@@ -32,6 +34,13 @@ public class Gamemanager : MonoBehaviour
     {
         if (a) imistake++;
         if (b) Nmistake++;
-        Debug.Log(imistake + " " + Nmistake);
+    }
+    public void FinalizeHasil() 
+    {
+        if (!Hand.is_endless)
+        {
+            if (imistake > 0) { Debug.Log("You ake a mistake in order"); }//Call Ui 
+            if (Nmistake > 0) { Debug.Log("You ake a mistake in SPECIAL order"); }//Call UI
+        }
     }
 }

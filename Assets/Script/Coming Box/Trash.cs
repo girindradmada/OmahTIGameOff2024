@@ -7,6 +7,10 @@ public class Trash : MonoBehaviour
     public NBoxIn N;
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        Buang();
+    }
+    void Buang() 
+    {
         N.gameObject.SetActive(false);
         gameObject.SetActive(false);
         Gamemanager.Instance.Nbox.botfull--;

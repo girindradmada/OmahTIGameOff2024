@@ -34,8 +34,13 @@ public class Nbox : MonoBehaviour
     [SerializeField] SpriteRenderer SRGo;
     bool dont_drop=true;
     [SerializeField] Trash Tra;
+    public  Queue<Item> NitemList = new Queue<Item>();
+    public int iteminq=0;
+    [SerializeField] float wait;
+    [SerializeField] Rigidbody2D GORB;
     private void Awake()
     {
+        GORB = GO.GetComponent<Rigidbody2D>();
         BBox = new NBoxIn[3];
         TBox = new NBoxIn[3];
         TBox[0] = T1;
@@ -70,11 +75,17 @@ public class Nbox : MonoBehaviour
             TBox[2].Activated(ints1);
             topfull = 3;
         }
-        else Debug.Log("Table Full");
+        else Debug.Log("Table Full");//Call UI
     }
     private void Update()
     {
         HandleChange();
+        if (Input.GetButtonUp("Fire1") && GO.activeSelf)
+        {
+            Physics2D.IgnoreLayerCollision(8, 8, false);
+            GORB.gravityScale = 1;
+            dont_drop = false;
+        }
     }
     private void FixedUpdate()
     {
@@ -82,11 +93,6 @@ public class Nbox : MonoBehaviour
         Pos.z = 0;
         if(dont_drop)
         GO.transform.position = Pos;
-        if (Input.GetButtonUp("Fire1") && GO.activeSelf) 
-        {
-            Physics2D.IgnoreLayerCollision(8, 8, false);
-            dont_drop = false;
-        }
     }
     void HandleChange()
     {
@@ -97,35 +103,52 @@ public class Nbox : MonoBehaviour
             {
                 if (hit.collider.TryGetComponent<NBoxIn>(out NBoxIn T))
                 {
+                    
                     if ( T.on_top)
                     {
-                        for (int i = 0; i < 3; i++)
+                        if (botfull == 3) Debug.Log("Full");//Call UI
+                        else
                         {
-                            if (!BBox[i].gameObject.activeSelf)
+                            for (int i = 0; i < 3; i++)
                             {
-                                T = BBox[i];
-                                break;
+                                if (!BBox[i].gameObject.activeSelf)
+                                {
+                                    T = BBox[i];
+                                    break;
+                                }
                             }
-                        }
-                        for (int i = 0; i < 3; i++)
+                            for (int i = 0; i < 3; i++)
 
-                        {
-                            if (TBox[i].gameObject.activeSelf)
                             {
-                                TBox[i].Switch(T);
-                                botfull++;
-                                topfull--;
-                                break;
+                                if (TBox[i].gameObject.activeSelf)
+                                {
+                                    TBox[i].Switch(T);
+                                    botfull++;
+                                    topfull--;
+                                    break;
+                                }
                             }
                         }
-                        Debug.Log("Full");
                     }
                     else
                     if (!T.on_top)
                     {
                         T.OpenBox();
                     }
+                }else
+                if (hit.collider.TryGetComponent<Nitem>(out Nitem A))
+                {
+                    A.GotClick();
                 }
+            }
+            
+        }
+        if (Input.GetButtonDown("Fire2")) 
+        {
+            if (NitemList.TryDequeue(out Item ou)) 
+            {
+            Hand.Instance.HandleJatuh(ou);
+                iteminq--;
             }
         }
     }
@@ -133,7 +156,10 @@ public class Nbox : MonoBehaviour
     {
         SRGo.sprite = s;
         Physics2D.IgnoreLayerCollision(8, 8, true);
+        GO.transform.position = Pos;
+        dont_drop = true;
         Tra.N = a;
+        GORB.gravityScale = 0;
         GO.SetActive(true);
     }
     

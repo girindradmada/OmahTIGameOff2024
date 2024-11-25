@@ -1022,11 +1022,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 1887464337}
-  jatuh: {fileID: 0}
+  jatuh:
+  - {fileID: 0}
+  jat: {fileID: 0}
+  at: 0
+  current: 0
+  is_endless: 0
   hand: {fileID: 0}
   OnHand: {fileID: 581541544}
-  spriteRenderer: {fileID: 581541545}
+  HandRenderer: {fileID: 0}
   full: 0
+  Box: {fileID: 0}
+  Ntype: 7
+  itype: 8
+  loader: {fileID: 0}
+  done: 0
+  stage: 1
 --- !u!1 &485013397
 GameObject:
   m_ObjectHideFlags: 0
@@ -1503,7 +1514,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 0.10981059, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.10981059, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2031,10 +2042,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48440227d2b2231408619e591dee5f8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  computerScreen: {fileID: 1430400093}
-  lookUnderButton: {fileID: 1764567650}
-  _camera: {fileID: 1887464337}
-  cursor: {fileID: 581541544}
 --- !u!1 &973243260
 GameObject:
   m_ObjectHideFlags: 0
@@ -2257,8 +2264,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8fc556447d5dd94ab32bd145b1ace6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Screen: {fileID: 1430400093}
-  lookUnderButton: {fileID: 1764567650}
 --- !u!1 &1443311661
 GameObject:
   m_ObjectHideFlags: 0
@@ -2347,7 +2352,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d5b5ec2280983d4da5da1885c45d871, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bar: {fileID: 0}
 --- !u!1 &1556716370
 GameObject:
   m_ObjectHideFlags: 0

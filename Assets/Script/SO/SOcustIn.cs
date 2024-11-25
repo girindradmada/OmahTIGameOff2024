@@ -7,7 +7,7 @@ using UnityEngine;
 public class SOcustIn : ScriptableObject
 {
     public string Custname;
-    public int[] items=new int[1];
-    public int[] Nitems = new int[1];
+    public int[] items=new int[8];
+    public int[] Nitems = new int[5];
     public bool is_N;
 }
