@@ -2,20 +2,8 @@ using UnityEngine;
 
 public class PopUpHandler : MonoBehaviour
 {
-    [SerializeField] Camera _camera;
-    [SerializeField] Transform OnHand;
-
     [SerializeField] GameObject screen;
     [SerializeField] GameObject lookButton;
-
-    private void FixedUpdate()
-    {
-
-        var mouseWorldPos = _camera.ScreenToWorldPoint(Input.mousePosition);
-        mouseWorldPos.z = 0;
-        OnHand.position = mouseWorldPos;
-
-    }
 
     private void Update()
     {
@@ -26,7 +14,10 @@ public class PopUpHandler : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            RaycastHit2D hit = Physics2D.Raycast(OnHand.position, Vector2.zero);
+            Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+            RaycastHit2D hit = Physics2D.Raycast(mouseWorldPos, Vector2.zero);
+
             if (hit.collider != null)
             {
                 if (hit.collider.gameObject == this.gameObject)
