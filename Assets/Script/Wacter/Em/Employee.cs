@@ -63,7 +63,8 @@ public class Employee : MonoBehaviour
                 StartSee -= Time.deltaTime;
                 transform.position += Vector3.right * walk * Time.deltaTime;
                 WalkTime -= Time.deltaTime;
-            }else
+            }
+            else
             if (StartSee <= 0 && !HasSee)
             {
                 Gamemanager.Instance.is_seen = true;
@@ -72,7 +73,11 @@ public class Employee : MonoBehaviour
                 SEE = true;
                 RD.sprite = looking;
             }
-            else WalkTime -= Time.deltaTime;
+            else
+            {
+            WalkTime -= Time.deltaTime;
+                transform.position += Vector3.right * walk * Time.deltaTime;
+            } 
         }
         else if(SEE) 
         {
