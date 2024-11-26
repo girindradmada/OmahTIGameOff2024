@@ -14,6 +14,9 @@ public class UIManager : MonoBehaviour
     public static float susAmount = 0;
 
     public static int[] drugOrderAmount;
+    public static int orderLimit = 10;
+
+    public static GameObject warningPopUp;
 
     private void Awake()
     {
@@ -38,6 +41,8 @@ public class UIManager : MonoBehaviour
 
         susBar = GameObject.Find("Sus Bar");
         susBarHandler = susBar.GetComponent<SusBarHandler>();
+
+        warningPopUp = GameObject.Find("Warning Pop Up");
 
         drugOrderAmount = new int[5];
         for(int i = 0; i < drugOrderAmount.Length; i++)

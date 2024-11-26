@@ -3,7 +3,7 @@ using TMPro;
 
 public class drugOptionHandler : MonoBehaviour
 {
-    [SerializeField] public TextMeshProUGUI amountText;
+    public TextMeshProUGUI amountText;
 
     private void Start()
     {
@@ -15,9 +15,10 @@ public class drugOptionHandler : MonoBehaviour
         string optionName = this.gameObject.name;
         int orderAmountIndex = (int)char.GetNumericValue(optionName[optionName.Length - 1]);
 
-        if (UIManager.drugOrderAmount[orderAmountIndex] < 5)
+        if (UIManager.drugOrderAmount[orderAmountIndex] < 5 && UIManager.orderLimit > 0)
         {
             UIManager.drugOrderAmount[orderAmountIndex]++;
+            UIManager.orderLimit--;
             updateText(orderAmountIndex);
         }
     }
@@ -30,6 +31,7 @@ public class drugOptionHandler : MonoBehaviour
         if (UIManager.drugOrderAmount[orderAmountIndex] > 0)
         {
             UIManager.drugOrderAmount[orderAmountIndex]--;
+            UIManager.orderLimit++;
             updateText(orderAmountIndex);
         }
     }
