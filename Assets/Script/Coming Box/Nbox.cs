@@ -38,6 +38,8 @@ public class Nbox : MonoBehaviour
     public int iteminq=0;
     [SerializeField] float wait;
     [SerializeField] Rigidbody2D GORB;
+    [SerializeField] float In_cooldown=0;
+    [SerializeField] float drop_time;
     private void Awake()
     {
         GORB = GO.GetComponent<Rigidbody2D>();
@@ -52,8 +54,14 @@ public class Nbox : MonoBehaviour
         Pos = cam.ScreenToWorldPoint(Input.mousePosition);
         Pos.z = 0;
     }
+    public void OrderDef() 
+    {
+        Order(UIManager.drugOrderAmount);
+    }
     public void Order(int[] Nitem) 
     {
+        if (In_cooldown > 0) Debug.Log("wait"+(int)In_cooldown);//Call UI
+        else
         if (topfull <= 0)
         {
             int[] ints = new int[Nitem.Length];
@@ -76,6 +84,8 @@ public class Nbox : MonoBehaviour
             topfull = 3;
         }
         else Debug.Log("Table Full");//Call UI
+        In_cooldown = 120;
+        for (int i = 0; i < Nitem.Length; i++) Nitem[i] = 0;
     }
     private void Update()
     {
@@ -93,6 +103,8 @@ public class Nbox : MonoBehaviour
         Pos.z = 0;
         if(dont_drop)
         GO.transform.position = Pos;
+        In_cooldown-=Time.deltaTime;
+        drop_time -= Time.deltaTime;
     }
     void HandleChange()
     {
@@ -145,10 +157,12 @@ public class Nbox : MonoBehaviour
         }
         if (Input.GetButtonDown("Fire2")) 
         {
+            if(drop_time<=0)
             if (NitemList.TryDequeue(out Item ou)) 
             {
             Hand.Instance.HandleJatuh(ou);
                 iteminq--;
+                drop_time = 1;
             }
         }
     }
@@ -162,5 +176,4 @@ public class Nbox : MonoBehaviour
         GORB.gravityScale = 0;
         GO.SetActive(true);
     }
-    
 }

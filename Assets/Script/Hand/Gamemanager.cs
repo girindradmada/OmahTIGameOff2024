@@ -14,6 +14,8 @@ public class Gamemanager : MonoBehaviour
     public Nbox Nbox;
     public SOCust CustomerScripO;
     public bool is_seen;
+    public float seen_time;
+    public WHandler WHandler;
     private void Awake()
     {
 
@@ -42,5 +44,10 @@ public class Gamemanager : MonoBehaviour
             if (imistake > 0) { Debug.Log("You ake a mistake in order"); }//Call Ui 
             if (Nmistake > 0) { Debug.Log("You ake a mistake in SPECIAL order"); }//Call UI
         }
+    }
+    private void FixedUpdate()
+    {
+        seen_time -= Time.deltaTime;
+        if(seen_time<=0)is_seen = false;
     }
 }

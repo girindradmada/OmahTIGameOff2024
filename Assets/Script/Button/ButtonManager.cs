@@ -8,8 +8,8 @@ public class ButtonManager : MonoBehaviour
     bool isunder;
     public void ToUnder()
     {
-        if (isunder)pla.position +=Vector3.up*10;
-        else pla.position += Vector3.down * 10;
+        if (isunder)pla.position +=Vector3.up*12.5f;
+        else pla.position += Vector3.down * 12.5f;
         isunder = !isunder;
        
     }

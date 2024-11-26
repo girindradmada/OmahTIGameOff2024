@@ -7,7 +7,7 @@ public class Hand : MonoBehaviour
 {
 
     private static Hand _instance;
-    [SerializeField] Camera _camera;
+    public Camera _camera;
     [SerializeField] GameObject[] jatuh;
     [SerializeField] GameObject jat;
     [SerializeField] int at;
