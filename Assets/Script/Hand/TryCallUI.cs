@@ -2,6 +2,21 @@ using UnityEngine;
 
 public class TryCallUI : MonoBehaviour
 {
+    [SerializeField] public UIManager UIManager;
+
+    private void Awake()
+    {
+        GameObject uiManagerObject = GameObject.FindGameObjectWithTag("UI Manager");
+
+        if (uiManagerObject != null)
+        {
+            UIManager = uiManagerObject.GetComponent<UIManager>();
+        } else
+        {
+            Debug.Log("UI Manager Not Found");
+        }
+    }
+
     [ContextMenu("debug credit")]
     public void creditDebug()
     {
@@ -13,4 +28,18 @@ public class TryCallUI : MonoBehaviour
     {
         UIManager.susUpdate(20);
     }
+
+    [ContextMenu("debug employee")]
+
+    public void employeePopUpDebug()
+    {
+        Coroutine showWarning = StartCoroutine(UIManager.warningCoroutine(0, new Vector2(800, 100), 3f));
+    }
+
+    [ContextMenu("debug supervisor")]
+    public void supervisorPopUpDebug()
+    {
+        Coroutine showWarning = StartCoroutine(UIManager.warningCoroutine(1, new Vector2(200, 200), 3f));
+    }
 }
+

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour 
@@ -5,18 +6,18 @@ public class UIManager : MonoBehaviour
     public static UIManager _instance;
     public static UIManager Instance{ get { return _instance; } }
 
-    public static GameObject creditBar;
-    public static CreditBarHandler creditBarHandler;
+    [SerializeField] Canvas _canvas;
+
+    [SerializeField] CreditBarHandler creditBarHandler;
     public static float creditHealth = 100;
 
-    public static GameObject susBar;
-    public static SusBarHandler susBarHandler;
+    [SerializeField] SusBarHandler susBarHandler;
     public static float susAmount = 0;
 
     public static int[] drugOrderAmount;
     public static int orderLimit = 10;
 
-    public static GameObject warningPopUp;
+    [SerializeField] GameObject[] warningPopUp; //0 employee //1 supervisor //2 cctv
 
     private void Awake()
     {
@@ -36,14 +37,6 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        creditBar = GameObject.Find("Credit Bar");
-        creditBarHandler = creditBar.GetComponent<CreditBarHandler>();
-
-        susBar = GameObject.Find("Sus Bar");
-        susBarHandler = susBar.GetComponent<SusBarHandler>();
-
-        warningPopUp = GameObject.Find("Warning Pop Up");
-
         drugOrderAmount = new int[5];
         for(int i = 0; i < drugOrderAmount.Length; i++)
         {
@@ -51,15 +44,24 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public static void creditUpdate(float scoreUpdate)
+    public void creditUpdate(float scoreUpdate)
     {
         creditBarHandler.creditScore(scoreUpdate);
     }
 
-    public static void susUpdate(float scoreUpdate)
+    public void susUpdate(float scoreUpdate)
     {
         susBarHandler.susScore(scoreUpdate);
     }
 
+    public IEnumerator warningCoroutine(int popUpIndex, Vector2 popUpPostion, float waitTime)
+    {
+        GameObject popUp = Instantiate(warningPopUp[popUpIndex], _canvas.transform);
 
+        RectTransform rectTransform = popUp.GetComponent<RectTransform>();
+        rectTransform.anchoredPosition = popUpPostion;
+
+        yield return new WaitForSeconds(waitTime);
+        Destroy(popUp);
+    }
 }
