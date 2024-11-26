@@ -4,8 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Computer Screen
-  - List Screen
+  - UI Manager
   layers:
   - Default
   - TransparentFX
