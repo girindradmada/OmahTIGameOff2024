@@ -13,7 +13,7 @@ public class Hand : MonoBehaviour
     [SerializeField] int at;
     public Customer[] customers;
     public Customer[] Ncustomers;
-    [SerializeField] int current = 0;
+    public int current = 0;
     public bool is_endless;
     [SerializeField] Item hand;
     [SerializeField] GameObject OnHand;
