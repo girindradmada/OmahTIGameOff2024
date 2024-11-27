@@ -16,7 +16,7 @@ public class SOCust : ScriptableObject
         int k = 0;
         cust=new Customer[s.Length];
         Ncust = new Customer[N];
-        for (int i = 1; i < s.Length; i++) 
+        for (int i = 0; i < s.Length; i++) 
         {
             cust[i].name = s[i].Custname;   
             cust[i].items = s[i].items; if (cust[i].items == null) Debug.Log("aa"); if (s[i].items == null) Debug.Log("asa");

@@ -1,12 +1,18 @@
 using System.Collections;
 using UnityEngine;
+using TMPro;
 
 public class UIManager : MonoBehaviour 
 {
     public static UIManager _instance;
     public static UIManager Instance{ get { return _instance; } }
 
+    [SerializeField] Gamemanager gamemanager;
+
     [SerializeField] Canvas _canvas;
+
+    [SerializeField] public Item[] listOfDrugs;
+    [SerializeField] public Item[] listOfItems;
 
     [SerializeField] CreditBarHandler creditBarHandler;
     public static float creditHealth = 100;
@@ -19,6 +25,9 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] GameObject[] warningPopUp; //0 employee //1 supervisor //2 cctv
 
+    [SerializeField] TextMeshPro topScreenText;
+    int customerIndex;
+
     private void Awake()
     {
         if(_instance)
@@ -28,11 +37,27 @@ public class UIManager : MonoBehaviour
         {
             _instance = this;
         }
+
+        connectManagers();
     }
 
     private void OnDestroy()
     {
         _instance = null;
+    }
+
+    private void connectManagers()
+    {
+        GameObject _handObject = GameObject.FindGameObjectWithTag("Hand");
+
+        if (_handObject != null)
+        {
+            gamemanager = _handObject.GetComponent<Gamemanager>();
+        }
+        else
+        {
+            Debug.Log("hah?");
+        }
     }
 
     private void Start()
@@ -42,6 +67,9 @@ public class UIManager : MonoBehaviour
         {
             drugOrderAmount[i] = 0;
         }
+
+        customerIndex = -1;
+        nextTopScreenText();
     }
 
     public void creditUpdate(float scoreUpdate)
@@ -63,5 +91,25 @@ public class UIManager : MonoBehaviour
 
         yield return new WaitForSeconds(waitTime);
         Destroy(popUp);
+    }
+
+    [ContextMenu("debug next")]
+    public void nextTopScreenText()
+    {
+        customerIndex++;
+        topScreenText.text = gamemanager.CustomerScripO.cust[customerIndex].name + "\n\n";
+        
+       for(int i = 0; i < listOfItems.Length; i++)
+        {
+            if (gamemanager.CustomerScripO.cust[customerIndex].items[i] > 0)
+            {
+                topScreenText.text += gamemanager.CustomerScripO.cust[customerIndex].items[i].ToString() + " " + listOfItems[i].TheName;
+
+                if (gamemanager.CustomerScripO.cust[customerIndex].items[i + 1] > 0)
+                {
+                    topScreenText.text += ", ";
+                }
+            }
+        }
     }
 }

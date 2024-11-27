@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class TryCallUI : MonoBehaviour
 {
-    [SerializeField] public UIManager UIManager;
+    [SerializeField] UIManager UIManager;
 
     private void Awake()
     {
