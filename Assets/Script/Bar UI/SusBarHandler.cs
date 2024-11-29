@@ -50,7 +50,8 @@ public class SusBarHandler : MonoBehaviour
         {
             UIManager.susAmount -= susDepleteAmount;
             bar.fillAmount = UIManager.susAmount / 100;
-
+            waitOver = false;
+            StartCoroutine(wait());
             if (UIManager.susAmount <= 0)
             {
                 waitOver = false;

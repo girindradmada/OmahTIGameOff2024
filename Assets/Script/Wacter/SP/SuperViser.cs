@@ -33,9 +33,9 @@ public class SuperViser : MonoBehaviour
         SEE = false;
         HasSee = false;
         startwalking = false;
-        FromLeft = rand.Next(2) == 1;
+        FromLeft = rand.Next(4) %2==1 ;
         walk = 20 / WalkTime / transform.localScale.x;
-        if (FromLeft) walk = -walk;
+        if (!FromLeft) walk = -walk;
         call = false;
     }
     private void FixedUpdate()
@@ -48,16 +48,16 @@ public class SuperViser : MonoBehaviour
                 startwalking = true;
                 Vector3 po = transform.position;
                 if (FromLeft) po.x = -10;
-                else po.x = -10;
+                else po.x = 10;
                 po.y = 0;
                 po.z = 0;
                 transform.position = po;
                 RD.sprite = walking;
             }
-            else if (WalkAgain <= 1 && !call)
+            else if (WalkAgain <= 3 && !call)
             {
                 call = true;
-                UIManager.Instance.warningCoroutine(0, FromLeft ? new Vector2(-9, 0) : new Vector2(9, 0), 1);
+                Coroutine showWarning = StartCoroutine(UIManager.Instance.warningCoroutine(0, FromLeft ? new Vector2(-9, 0) : new Vector2(9, 0), 3));
             }
 
 

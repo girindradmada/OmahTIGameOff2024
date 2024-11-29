@@ -48,10 +48,10 @@ public class CCTV : MonoBehaviour
                 Gamemanager.Instance.is_seen = true;
             }
         }
-        else if (StartSee <= 1&&!call) 
+        else if (StartSee <= 3&&!call) 
         {
             call = true;
-            UIManager.Instance.warningCoroutine(3, transform.position, 1);
+            Coroutine showWarning = StartCoroutine(UIManager.Instance.warningCoroutine(2, transform.position, 3));
         }
     }
 }
