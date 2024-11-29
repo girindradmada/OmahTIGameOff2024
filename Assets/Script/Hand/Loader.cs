@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 public class Loader : MonoBehaviour
 {
     System.Random rand = new System.Random();
-    [SerializeField] int Ntype = 7;
+    [SerializeField] int Ntype = 5;
     [SerializeField] int itype = 8;
     [SerializeField] string[] strings = new string[10];
     public Customer[] All;

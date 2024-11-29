@@ -1865,6 +1865,8 @@ MonoBehaviour:
   Ntype: 7
   itype: 8
   loader: {fileID: 0}
+  emplo: 0
+  cctv: 3
   done: 0
   stage: 1
 --- !u!1 &485013397
@@ -2488,6 +2490,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30d5f12ad388f85498a6f7e46fa31cfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gamemanager: {fileID: 0}
+  _canvas: {fileID: 0}
+  listOfDrugs: []
+  listOfItems: []
+  creditBarHandler: {fileID: 0}
+  susBarHandler: {fileID: 0}
+  warningPopUp: []
+  topScreenText: {fileID: 0}
 --- !u!114 &528070581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2500,6 +2510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37413761eabf946469256427baaa2a60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UIManager: {fileID: 0}
 --- !u!1 &581541543
 GameObject:
   m_ObjectHideFlags: 0
@@ -4267,7 +4278,7 @@ SpriteRenderer:
   m_Size: {x: 1.25, y: 0.703125}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &953778781
