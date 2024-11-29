@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UIElements;
+using UnityEditor.Media;
 
 public class UIManager : MonoBehaviour 
 {
@@ -27,6 +29,11 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] TextMeshPro topScreenText;
     int customerIndex;
+
+    [SerializeField] TextMeshPro computerMessage;
+    [SerializeField] TextMeshPro timerText;
+    public static float timerValue;
+    public static Coroutine timer;
 
     private void Awake()
     {
@@ -103,13 +110,55 @@ public class UIManager : MonoBehaviour
         {
             if (gamemanager.CustomerScripO.cust[customerIndex].items[i] > 0)
             {
-                topScreenText.text += gamemanager.CustomerScripO.cust[customerIndex].items[i].ToString() + " " + listOfItems[i].TheName;
+                if (gamemanager.CustomerScripO.cust[customerIndex].items[i] > 1)
+                {
+                    topScreenText.text += gamemanager.CustomerScripO.cust[customerIndex].items[i].ToString() + " ";
+                }
+
+                topScreenText.text += listOfItems[i].TheName;
 
                 if (gamemanager.CustomerScripO.cust[customerIndex].items[i + 1] > 0)
                 {
                     topScreenText.text += ", ";
                 }
             }
+        }
+    }
+
+    public void showMessage(string message)
+    {
+        computerMessage.text = message;
+        Coroutine wait = StartCoroutine(messageCoroutine(3));
+    }
+
+    private IEnumerator messageCoroutine(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        computerMessage.text = "";
+    }
+
+    public void startTimer(float time)
+    {
+        timerText.text = time.ToString();
+        timer = StartCoroutine(timerCoroutine());
+    }
+
+    private IEnumerator timerCoroutine()
+    {
+        while(float.TryParse(timerText.text, out timerValue) && timerValue > 0)
+        {
+            yield return new WaitForSeconds(1);
+            timerValue--;
+            timerText.text = timerValue.ToString();
+        }
+    }
+
+    public void stopTimer()
+    {
+        if (timer != null)
+        {
+            StopCoroutine(timer);
+            timer = null;
         }
     }
 }

@@ -41,5 +41,23 @@ public class TryCallUI : MonoBehaviour
     {
         Coroutine showWarning = StartCoroutine(UIManager.warningCoroutine(1, new Vector2(200, 200), 3f));
     }
+
+    [ContextMenu("debug message")]
+    public void debugMassage()
+    {
+        UIManager.showMessage("this massage");
+    }
+
+    [ContextMenu("debug timer")]
+    public void timerDebug()
+    {
+        UIManager.startTimer(10);
+    }
+
+    [ContextMenu("stop timer debug")]
+    public void stopTimerDebug()
+    {
+        UIManager.stopTimer();
+    }
 }
 
