@@ -23,6 +23,8 @@ public class Hand : MonoBehaviour
     [SerializeField] int Ntype=7;
     [SerializeField] int itype=8;
     [SerializeField]Loader loader;
+    [SerializeField] int emplo;
+    [SerializeField] int cctv;
     public bool done=false;
     public int stage=1;
     public static Hand Instance { get { return _instance; } }
@@ -53,8 +55,9 @@ public class Hand : MonoBehaviour
     public void NewDay() 
     {
         stage++;
-        if (is_endless) { Load(stage); } 
-        else { StageLoad(); }
+        if (is_endless) 
+        { Load(stage); } 
+        else { StageLoad();}
     }
     private void OnDestroy()
     {
@@ -114,12 +117,14 @@ public class Hand : MonoBehaviour
     void Load(int day) 
     {
         loader.Change(10+3*stage/10,5+stage/5,1,1+stage/5,1,1+stage/5);
+        Gamemanager.Instance.WHandler.Set(emplo, cctv);
         StartCoroutine(wait(customers));
     }
     void StageLoad() 
     {
-        customers = Gamemanager.Instance.CustomerScripO.GetCustomer(false); ;
+        customers = Gamemanager.Instance.CustomerScripO.GetCustomer(false);
         Ncustomers = Gamemanager.Instance.CustomerScripO.GetCustomer(true);
+        Gamemanager.Instance.WHandler.Set(emplo,cctv);
     }
     void HandleClose() 
     {

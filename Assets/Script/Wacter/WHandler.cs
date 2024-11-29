@@ -4,35 +4,42 @@ using UnityEngine;
 
 public class WHandler : MonoBehaviour
 {
-    public int total_employee=0;//how many emplooyes
-    public int SuperviserSusLevel=0;//how often SP came
-    public int total_cctv = 0;//How many cctv Exicts
-    GameObject CCTV;
-    GameObject Employee;
-    GameObject Superviser;
-    public void Set(int EM,int CC,int SP) 
+    [ContextMenu("Do Something")]
+    private void Do()
     {
-        SuperviserSusLevel = SP;
+        Set(total_employee,total_cctv);
+    }
+    public int total_employee=0;//how many emplooyes
+    public int total_cctv = 0;//How many cctv Exicts
+    [SerializeField]GameObject CCTV;
+    [SerializeField] GameObject Employee;
+    [SerializeField] GameObject t;
+    [SerializeField] GameObject Fill;
+    GameObject temp;
+    public void Set(int EM,int CC) 
+    {
+        Destroy(t);
+        t= Instantiate(Fill);
         total_employee = EM;
         total_cctv=CC;
         SetCCTV();
-        SetSuperviser();
-        SetCCTV();
+        SetEmployees();
     }
 
     void SetCCTV() 
     {
+        float a = 11f / (total_cctv + 1);
         for (int i = 0; i < total_cctv; i++) 
         {
-        Instantiate(CCTV);
+        temp = Instantiate(CCTV,t.transform);
+        temp.transform.position = new Vector3(-9+(i+1)*a,4,0);
         }
     }
-    void SetSuperviser() { }
     void SetEmployees() 
     {
         for (int i = 0; i < total_employee; i++)
         {
-        GameObject E=Instantiate(Employee);
+        GameObject E=Instantiate(Employee,t.transform);
         Employee s = E.GetComponent<Employee>();
         s.Number = i;
         }

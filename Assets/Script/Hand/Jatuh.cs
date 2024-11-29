@@ -18,6 +18,7 @@ public class Jatuh : MonoBehaviour
     }
     public void Enter()
     {
+        if(Item.ItemInt>=0)
         Hand.Instance.ItemEnter(Item);
         gameObject.SetActive(false);
     }

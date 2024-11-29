@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Employee : MonoBehaviour
 {
-    System.Random rand=new System.Random();
+    System.Random rand;
     public int Number;
     [SerializeField]float StartSee;
     float SeeTime;
@@ -15,12 +15,14 @@ public class Employee : MonoBehaviour
     bool startwalking;
     bool HasSee;
     bool FromLeft;
+    bool call;
     [SerializeField]Sprite looking;
     [SerializeField]Sprite walking;
     [SerializeField]SpriteRenderer RD;
     // Start is called before the first frame update
     void Awake()
     {
+        rand = Gamemanager.Instance.rand;
         Randomize();
     }
 
@@ -37,23 +39,29 @@ public class Employee : MonoBehaviour
         FromLeft=rand.Next(1)==1;
         walk = 20 / WalkTime/transform.localScale.x;
         if(FromLeft)walk=-walk;
+        call = false;
     }
     private void FixedUpdate()
     {
         if (!startwalking)
         {
+            WalkAgain -= Time.deltaTime;
             if (WalkAgain <= 0)
             {
                 startwalking = true;
                 Vector3 po = transform.position;
                 if (FromLeft) po.x = -10;
                 else po.x = -10;
-                po.y = rand.Next(10) / 10;
+                po.y = 0;
                 transform.position = po;
                 RD.sprite = walking;
-
             }
-            WalkAgain -= Time.deltaTime;
+            else if (WalkAgain <= 1&&!call)
+            {
+                call = true;
+                UIManager.Instance.warningCoroutine(1,FromLeft?new Vector2(-9,0):new Vector2(9,0),1);
+            }
+
         }
         else
         if (startwalking && !SEE)
@@ -67,9 +75,13 @@ public class Employee : MonoBehaviour
             else
             if (StartSee <= 0 && !HasSee)
             {
-                Gamemanager.Instance.is_seen = true;
+
                 if (Gamemanager.Instance.seen_time < SeeTime)
-                    Gamemanager.Instance.seen_time = SeeTime;
+                {
+                    Gamemanager.Instance.seen_time = SeeTime;     
+                    Gamemanager.Instance.is_seen = true;                    
+                }
+
                 SEE = true;
                 RD.sprite = looking;
             }

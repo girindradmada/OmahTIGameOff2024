@@ -16,9 +16,11 @@ public class Gamemanager : MonoBehaviour
     public bool is_seen;
     public float seen_time;
     public WHandler WHandler;
+    public SuperViser SuperViser;
+    public System.Random rand;
+    public bool isunder;
     private void Awake()
     {
-
         if (_instance != null && _instance != this)
         {
             Destroy(this.gameObject);
@@ -27,6 +29,7 @@ public class Gamemanager : MonoBehaviour
         {
             _instance = this;
         }
+        rand = new System.Random();
     }
     private void OnDestroy()
     {
@@ -47,7 +50,11 @@ public class Gamemanager : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (is_seen) 
+        {
         seen_time -= Time.deltaTime;
-        if(seen_time<=0)is_seen = false;
+        if(seen_time<=0)is_seen = false;        
+        }
+
     }
 }

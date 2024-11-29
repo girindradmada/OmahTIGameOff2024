@@ -22,7 +22,7 @@ public class Nbox : MonoBehaviour
     [SerializeField] NBoxIn B1;
     [SerializeField] NBoxIn B2;
     [SerializeField] NBoxIn B3;
-    [SerializeField] int topfull=0;
+    [SerializeField] bool topfull=false;
     public int botfull=0;
     System.Random rand=new System.Random();
     int a;
@@ -39,6 +39,10 @@ public class Nbox : MonoBehaviour
     [SerializeField] Rigidbody2D GORB;
     [SerializeField] float In_cooldown=0;
     [SerializeField] float drop_time;
+    [SerializeField] float SUS;
+    int top;
+    bool cooldown;
+    bool dropped;
     private void Awake()
     {
         GORB = GO.GetComponent<Rigidbody2D>();
@@ -52,6 +56,7 @@ public class Nbox : MonoBehaviour
         BBox[2] = B3;
         Pos = cam.ScreenToWorldPoint(Input.mousePosition);
         Pos.z = 0;
+        SUS = 3;
     }
     public void OrderDef() 
     {
@@ -59,9 +64,9 @@ public class Nbox : MonoBehaviour
     }
     public void Order(int[] Nitem) 
     {
-        if (In_cooldown > 0) Debug.Log("wait"+(int)In_cooldown);//Call UI
+        if (cooldown) Debug.Log("wait"+(int)In_cooldown);//Call UI
         else
-        if (topfull <= 0)
+        if (!topfull)
         {
             int[] ints = new int[Nitem.Length];
             int[] ints1 = new int[Nitem.Length];
@@ -80,10 +85,12 @@ public class Nbox : MonoBehaviour
             TBox[0].Activated(ints);
             TBox[1].Activated(ints2);
             TBox[2].Activated(ints1);
-            topfull = 3;
+            top = 3;
+            topfull = true;
         }
         else Debug.Log("Table Full");//Call UI
-        In_cooldown = 120;
+        In_cooldown = 60;
+        cooldown = true;
         for (int i = 0; i < Nitem.Length; i++) Nitem[i] = 0;
     }
     private void Update()
@@ -102,8 +109,26 @@ public class Nbox : MonoBehaviour
         Pos.z = 0;
         if(dont_drop)
         GO.transform.position = Pos;
-        In_cooldown-=Time.deltaTime;
+        if (cooldown) 
+        {
+         In_cooldown-=Time.deltaTime;
+        if(In_cooldown<=0)cooldown=false;
+        }
+        if (dropped) 
+        {
         drop_time -= Time.deltaTime;
+            if (drop_time <= 0) dropped = false;
+        }
+        if (topfull) 
+        {
+        SUS-= Time.deltaTime;
+            if (SUS<=0) 
+            {
+                UIManager.Instance.susUpdate(5);
+                SUS = 3;
+            }
+        }
+
     }
     void HandleChange()
     {
@@ -135,7 +160,12 @@ public class Nbox : MonoBehaviour
                                 {
                                     TBox[i].Switch(T);
                                     botfull++;
-                                    topfull--;
+                                    top--;
+                                    if (top <= 0) 
+                                    {
+                                    topfull =false;
+                                    SUS = 3;
+                                    }
                                     break;
                                 }
                             }
@@ -159,9 +189,24 @@ public class Nbox : MonoBehaviour
             if(drop_time<=0)
             if (NitemList.TryDequeue(out Item ou)) 
             {
-            Hand.Instance.HandleJatuh(ou);
-                iteminq--;
-                drop_time = 1;
+                    if (ou.ItemInt == -1) 
+                    {
+                    Hand.Instance.HandleJatuh(ou);
+                    Gamemanager.Instance.SuperViser.GetNote();
+                    }
+                    else if (dropped) 
+                    {
+                    Hand.Instance.HandleJatuh(ou);
+                    iteminq--;
+                    dropped = true;
+                    drop_time = 3;
+                    if (Gamemanager.Instance.is_seen) 
+                    {
+                    UIManager.Instance.susUpdate(10);
+                    }
+                    }
+
+            
             }
         }
     }

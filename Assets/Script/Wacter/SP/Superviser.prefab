@@ -97,3 +97,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af20a31362bcdfc4db940fccf52b6377, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StartSee: 0
+  WalkAgain: 0
+  SEE: 0
+  looking: {fileID: 21300000, guid: 71679715f0b94cd48adfd1ac759feb5d, type: 3}
+  walking: {fileID: 21300000, guid: e96c7af30c7261145877b00170e2d8bb, type: 3}
+  RD: {fileID: 6074015831311814979}
