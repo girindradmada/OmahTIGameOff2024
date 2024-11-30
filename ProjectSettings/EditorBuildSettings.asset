@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Stage1.unity
     guid: c3cf4ec5a266f10468cbd888be3802c4
+  - enabled: 0
+    path: Assets/Scenes/Stage1 - dais.unity
+    guid: ac721681d74e9fc49b2af6250f59d5a8
+  - enabled: 1
+    path: Assets/Scenes/State.unity
+    guid: ff455af02b2eae044a8bb4bd9a6a6cf2
   m_configObjects: {}

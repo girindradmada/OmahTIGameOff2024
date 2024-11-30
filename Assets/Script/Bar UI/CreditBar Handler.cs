@@ -14,7 +14,7 @@ public class CreditBarHandler : MonoBehaviour
     {
         UIManager.creditHealth += addScore;
         bar.fillAmount = UIManager.creditHealth/100;
-        if (UIManager.susAmount <= 0) { Gamemanager.Instance.Load(2); }
+        if (UIManager.creditHealth <= 0) { Gamemanager.Instance.Load(2); }
     }
 
     [ContextMenu("debug")]

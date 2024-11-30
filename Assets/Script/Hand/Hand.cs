@@ -28,6 +28,7 @@ public class Hand : MonoBehaviour
     public bool done=false;
     public int stage=1;
     public static Hand Instance { get { return _instance; } }
+
     private void Awake()
     {
 
@@ -158,6 +159,7 @@ public class Hand : MonoBehaviour
                 if (customers[i].items[j] != 0) { wrong1 = true;break; }
                 
             }
+            
             for (int j = 0; j < Ntype; j++)
             {
                 if (customers[i].Nitems[j] != 0) { wrong2 = true; break; }

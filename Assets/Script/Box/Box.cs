@@ -44,6 +44,7 @@ public class Box : MonoBehaviour
                 Opening.SetActive(true);
                 R.sprite = open;
                 loading=false;
+                UIManager.Instance.nextTopScreenText();
             }
         }
     }

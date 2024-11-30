@@ -174,6 +174,6 @@ public class UIManager : MonoBehaviour
     {
         int current = int.Parse(scoreText.text);
         current += add;
-        scoreText.text = current.ToString();
+        scoreText.text = "Score: " + current.ToString();
     }
 }
