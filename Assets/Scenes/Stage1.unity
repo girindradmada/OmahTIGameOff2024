@@ -1436,6 +1436,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   screen: {fileID: 1512397804}
   lookButton: {fileID: 1361864817}
+  paper: 0
 --- !u!61 &227979714
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11038,6 +11039,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   screen: {fileID: 237395723}
   lookButton: {fileID: 1271533543}
+  paper: 0
 --- !u!114 &1876098141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11223,6 +11225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   screen: {fileID: 191759412}
   lookButton: {fileID: 1361864817}
+  paper: 0
 --- !u!61 &1927881417
 BoxCollider2D:
   m_ObjectHideFlags: 0
