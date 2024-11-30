@@ -48,7 +48,12 @@ public class drugClientsHandler : MonoBehaviour
             {
                 if (_gameManager.CustomerScripO.Ncust[i].Nitems[j] > 0)
                 {
-                    listText.text += _gameManager.CustomerScripO.Ncust[i].Nitems[j].ToString() + " " + _uiManager.listOfDrugs[j].TheName;
+                    if (_gameManager.CustomerScripO.Ncust[i].Nitems[j] > 1)
+                    {
+                        listText.text += _gameManager.CustomerScripO.Ncust[i].Nitems[j].ToString() + " ";
+                    }
+
+                    listText.text += _uiManager.listOfDrugs[j].TheName;
 
                     if (_gameManager.CustomerScripO.Ncust[i].Nitems[j + 1] > 0)
                     {

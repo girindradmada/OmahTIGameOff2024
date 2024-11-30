@@ -28,11 +28,11 @@ public class SusBarHandler : MonoBehaviour
         //temp += addscore;
         //bar.fillAmount = temp / 100;
 
-        if (susCoroutine != null)
+        /*if (susCoroutine != null)
         {
             StopCoroutine(susCoroutine);
             susCoroutine = null;
-        }
+        }*/
 
         susCoroutine = StartCoroutine(wait());
         waitOver = false;

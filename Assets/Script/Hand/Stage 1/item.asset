@@ -9,15 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 195a1350989602640a3ac2dce06c7ce8, type: 3}
+  m_Script: {fileID: 11500000, guid: de559e601d361fc42bd067f3f9293fa8, type: 3}
   m_Name: item
   m_EditorClassIdentifier: 
-  N: 3
-  s:
-  - {fileID: 11400000, guid: 5fa094415a201eb45ba1eb49ea223080, type: 2}
-  - {fileID: 11400000, guid: 25547ddfca3834c409ca1007328b0160, type: 2}
-  - {fileID: 11400000, guid: 84f05a536ea7a2a4596f476bbab89fc9, type: 2}
-  - {fileID: 11400000, guid: cb0d36789137a0b4798ef4f88b56a273, type: 2}
-  - {fileID: 11400000, guid: f8c32648f2123c749987c660c7bc1ad1, type: 2}
-  - {fileID: 11400000, guid: ade852564c0f48a43b449d1cad90eff3, type: 2}
-  - {fileID: 11400000, guid: 679c8af3cb746a348837cfa8dd656d6d, type: 2}
+  Custname: Steve
+  items: 0000000001000000000000000000000000000000000000000000000000000000
+  Nitems: 0000000000000000000000000000000000000000
+  is_N: 0
