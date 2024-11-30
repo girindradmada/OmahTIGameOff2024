@@ -17,14 +17,21 @@ public class LoadState : MonoBehaviour
     private void Start()
     {
         state = State.Instance;
+        SoundManager.Instance.ChangeBGM(0);
         sentence.text = text[state.cause];
         if (state.won)
         {
+            SoundManager.Instance.PlaySFX(14);
             sentenceButton.text = "Next";
             State.Instance.day += 1;
             State.Instance.day %= 6;
         }
-        else sentenceButton.text = "Retry";
+        else 
+        {
+            SoundManager.Instance.PlaySFX(5);
+        sentenceButton.text = "Retry";
+        }
+
         if (State.Instance.endless)
         {
             Score.text = "You have survived for " + state.day + " day\nYour Score is " + state.score + " that is quite impresive one way or another\nbut alas in the end you are still a human that will make mistake\nAnd This Is a last message For U";

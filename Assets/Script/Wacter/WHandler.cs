@@ -28,7 +28,7 @@ public class WHandler : MonoBehaviour
 
     void SetCCTV() 
     {
-        float a = 11f / (total_cctv + 1);
+        float a = 10f / (total_cctv + 1);
         for (int i = 0; i < total_cctv; i++) 
         {
         temp = Instantiate(CCTV,t.transform);

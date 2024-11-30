@@ -79,6 +79,7 @@ public class SuperViser : MonoBehaviour
                     Gamemanager.Instance.seen_time = SeeTime;
                 SEE = true;
                 RD.sprite = looking;
+                SoundManager.Instance.PlaySFX(6);
             }
             else
             {
@@ -104,9 +105,15 @@ public class SuperViser : MonoBehaviour
     }
     public void GetNote() 
     {
+        SoundManager.Instance.PlaySFX(4);
         if (!SEE) return;
         HasSee = true;
         SEE = false;
         RD.sprite = walking;
+    }
+    IEnumerator haha()
+    {
+    yield return 3;
+        SoundManager.Instance.PlaySFX(10);
     }
 }
