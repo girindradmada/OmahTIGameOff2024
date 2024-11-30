@@ -22,6 +22,10 @@ public class Loader : MonoBehaviour
         Hand.Instance.Ncustomers = Nark;
         Hand.Instance.customers = All;
     }
+    private void Awake()
+    {
+        strings=["Steve","Mut","Dain","Rome","Zak","Jong","Ren","Huncho","Beta","Uno","Chelsea","Monk","Mirvan","Fian","Garya","Jamal","Bean","Thugger","Sasha","Michael","Schmeeve","Schmunk","Schmouber","Schmaster","Gonk","Bronk","Brunkketunk","Brooke","Gabriel","Bim","Darryl","Drijzy","Aaron","Hector","Loseph","Ken"];
+    }
     public void Randomize( int mina, int maxa)
     {
         
