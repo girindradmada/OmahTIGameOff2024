@@ -24,7 +24,7 @@ public class SusBarHandler : MonoBehaviour
     {
         UIManager.susAmount += addscore;
         bar.fillAmount = UIManager.susAmount/100;
-
+        if (UIManager.susAmount >= 100) { Gamemanager.Instance.Load(1); }
         //temp += addscore;
         //bar.fillAmount = temp / 100;
 

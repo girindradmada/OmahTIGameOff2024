@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Gamemanager : MonoBehaviour
 {
@@ -19,6 +21,9 @@ public class Gamemanager : MonoBehaviour
     public SuperViser SuperViser;
     public System.Random rand;
     public bool isunder;
+    public float timer;
+    int score;
+    int TolerableN;
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -30,6 +35,8 @@ public class Gamemanager : MonoBehaviour
             _instance = this;
         }
         rand = new System.Random();
+        score = 0;
+        TolerableN = 15;
     }
     private void OnDestroy()
     {
@@ -44,8 +51,19 @@ public class Gamemanager : MonoBehaviour
     {
         if (!Hand.is_endless)
         {
-            if (imistake > 0) { Debug.Log("You ake a mistake in order"); }//Call Ui 
-            if (Nmistake > 0) { Debug.Log("You ake a mistake in SPECIAL order"); }//Call UI
+            if (imistake > 0) { Load(2); }
+            else
+            if (Nmistake > 0) { Load(3); }
+            else
+            { Load(0); }
+        }
+        else 
+        {
+            TolerableN -= Nmistake;
+            if (TolerableN <= 0) Load(3);
+            UIManager.Instance.creditUpdate(-imistake*3);
+            score += (Hand.customers.Length-imistake) * Hand.stage * 5;
+            score += (Hand.Ncustomers.Length-Nmistake) * Hand.stage * 10;
         }
     }
     private void FixedUpdate()
@@ -55,13 +73,14 @@ public class Gamemanager : MonoBehaviour
         seen_time -= Time.deltaTime;
         if(seen_time<=0)is_seen = false;        
         }
-
     }
     public void Load(int why) 
     {
     State.Instance.cause = why;
     if(why==0)State.Instance.won = true;
     else State.Instance.won = false;
-        State.Instance.day = Hand.stage;
+    State.Instance.day = Hand.stage;
+    State.Instance.endless = Hand.is_endless;
+        SceneManager.LoadScene("State");
     }
 }

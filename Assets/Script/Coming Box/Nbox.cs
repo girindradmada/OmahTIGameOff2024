@@ -64,7 +64,7 @@ public class Nbox : MonoBehaviour
     }
     public void Order(int[] Nitem) 
     {
-        if (cooldown) Debug.Log("wait"+(int)In_cooldown);//Call UI
+        if (cooldown) UIManager.Instance.showMessage("wait"+(int)In_cooldown);//Call UI
         else
         if (!topfull)
         {
@@ -88,7 +88,7 @@ public class Nbox : MonoBehaviour
             top = 3;
             topfull = true;
         }
-        else Debug.Log("Table Full");//Call UI
+        else UIManager.Instance.showMessage("Table Full");//Call UI
         In_cooldown = 60;
         cooldown = true;
         for (int i = 0; i < Nitem.Length; i++) Nitem[i] = 0;
@@ -142,7 +142,7 @@ public class Nbox : MonoBehaviour
                     
                     if ( T.on_top)
                     {
-                        if (botfull == 3) Debug.Log("Full");//Call UI
+                        if (botfull == 3) UIManager.Instance.showMessage("Full");//Call UI
                         else
                         {
                             for (int i = 0; i < 3; i++)

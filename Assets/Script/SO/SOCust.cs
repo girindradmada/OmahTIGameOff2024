@@ -19,7 +19,7 @@ public class SOCust : ScriptableObject
         for (int i = 0; i < s.Length; i++) 
         {
             cust[i].name = s[i].Custname;   
-            cust[i].items = s[i].items; if (cust[i].items == null) Debug.Log("aa"); if (s[i].items == null) Debug.Log("asa");
+            cust[i].items = s[i].items;
             cust[i].Nitems = s[i].Nitems;
             if (s[i].is_N) 
             {
