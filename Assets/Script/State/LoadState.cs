@@ -10,19 +10,25 @@ public class LoadState : MonoBehaviour
     [SerializeField] TMP_Text sentence;
     [SerializeField] TMP_Text sentenceButton;
     [SerializeField] TMP_Text MainMenuButton;
+    [SerializeField] TMP_Text Score;
     [SerializeField] State state;
 
-    private void Awake()
+    private void Start()
     {
-        state= GameObject.FindWithTag("State").GetComponent<State>();
+        state= State.Instance;
         sentence.text = text[state.cause];
         if (state.won)
         {
             sentenceButton.text = "Next";
             State.Instance.day += 1;
-            State.Instance.day %= 7;
+            State.Instance.day %= 6;
         }
         else sentenceButton.text = "Retry";
+        if (State.Instance.endless) 
+        {
+            Score.text = "You have survived for "+state.day+"day \n Your Score is "+state.score+"\n but in the end you are still a human that will make mistake";
+            
+        }
     }
     public void Next() 
     {
