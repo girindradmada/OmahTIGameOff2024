@@ -5958,6 +5958,10 @@ MonoBehaviour:
   - {fileID: 687212341634365409, guid: 5b08a706e7e68c242a9e28d6f122e366, type: 3}
   - {fileID: 4214942781962693393, guid: 9e39e96661842a7449e034fd476e5732, type: 3}
   topScreenText: {fileID: 766839313}
+  computerMessage: {fileID: 0}
+  timerText: {fileID: 0}
+  dayText: {fileID: 0}
+  scoreText: {fileID: 0}
 --- !u!4 &1153606839
 Transform:
   m_ObjectHideFlags: 0
@@ -7762,7 +7766,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1345030606}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cc23c6ff1027cff46ac0b69179c77ab0, type: 3}
   m_Name: 
@@ -7771,8 +7775,6 @@ MonoBehaviour:
   targetHeight: 1080
   dynamicMaxWidth: 2560
   dynamicMaxHeight: 1440
-  useDynamicWidth: 0
-  useDynamicHeight: 0
 --- !u!1 &1371442711
 GameObject:
   m_ObjectHideFlags: 0

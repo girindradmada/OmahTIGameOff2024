@@ -1,8 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
-using UnityEngine.UIElements;
-using UnityEditor.Media;
 
 public class UIManager : MonoBehaviour 
 {
@@ -34,6 +32,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshPro timerText;
     public static float timerValue;
     public static Coroutine timer;
+
+    [SerializeField] TextMeshProUGUI dayText;
+    [SerializeField] TextMeshProUGUI scoreText;
 
     private void Awake()
     {
@@ -160,5 +161,19 @@ public class UIManager : MonoBehaviour
             StopCoroutine(timer);
             timer = null;
         }
+    }
+
+    public void dayChange()
+    {
+        int current = (int) dayText.text[dayText.text.Length - 1];
+        current += 1;
+        dayText.text = "Day " + current.ToString();
+    }
+
+    public void addScore(int add)
+    {
+        int current = int.Parse(scoreText.text);
+        current += add;
+        scoreText.text = current.ToString();
     }
 }
