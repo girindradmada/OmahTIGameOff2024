@@ -39,6 +39,6 @@ public class Nitem : MonoBehaviour
             }
         }
         else
-        Debug.Log("Your Hand Is Full");//call ui
+        UIManager.Instance.showMessage("Your Hand Is Full");//call ui
     }
 }

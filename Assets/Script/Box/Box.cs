@@ -38,7 +38,7 @@ public class Box : MonoBehaviour
         if (down) 
         {
             transform.position += Vector3.down * speed * Time.deltaTime;
-            if (transform.position.y <-0.7)
+            if (transform.position.y < -2.5)
             {
                 down = false;
                 Opening.SetActive(true);

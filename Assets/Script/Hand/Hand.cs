@@ -49,15 +49,15 @@ public class Hand : MonoBehaviour
         }
         OnHand.SetActive(false);
         stage = -1;
-        current = 0;
         NewDay();
     }
     public void NewDay() 
     {
-        stage++;
+        current = 0;
         if (is_endless) 
-        { Load(stage); } 
+        { Load(); stage++; } 
         else { StageLoad();}
+        
     }
     private void OnDestroy()
     {
@@ -77,7 +77,6 @@ public class Hand : MonoBehaviour
         var mouseWorldPos = _camera.ScreenToWorldPoint(Input.mousePosition);
         mouseWorldPos.z = 0;    
         OnHand.transform.position =mouseWorldPos;
-
     }
     private void Update() 
     {
@@ -114,11 +113,14 @@ public class Hand : MonoBehaviour
         else
             customers[current].Nitems[a.ItemInt]--;
     }
-    void Load(int day) 
+    void Load() 
     {
         loader.Change(10+3*stage/10,5+stage/5,1,1+stage/5,1,1+stage/5);
+        emplo=1+stage/3;
+        emplo=1+stage/4;
         Gamemanager.Instance.WHandler.Set(emplo, cctv);
         StartCoroutine(wait(customers));
+        UIManager.Instance.startTimer(169 + stage * 3);
     }
     void StageLoad() 
     {

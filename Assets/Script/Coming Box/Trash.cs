@@ -21,7 +21,7 @@ public class Trash : MonoBehaviour
         {
             N.gameObject.SetActive(true);
             gameObject.SetActive(false);
-            Debug.Log("Dont Throw Trash Randomly Not Gud");
+            UIManager.Instance.showMessage("Dont Throw Trash Randomly Not Gud");
         }
     }
 }
