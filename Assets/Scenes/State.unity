@@ -382,7 +382,8 @@ MonoBehaviour:
   endless: 0
   day: 1
   score: 0
-  Name: 0
+  Name: 
+  Score: 0
 --- !u!4 &787594335
 Transform:
   m_ObjectHideFlags: 0
@@ -1522,6 +1523,7 @@ MonoBehaviour:
   sentence: {fileID: 1650575678}
   sentenceButton: {fileID: 850287560}
   MainMenuButton: {fileID: 313057446}
+  Score: {fileID: 0}
   state: {fileID: 787594334}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

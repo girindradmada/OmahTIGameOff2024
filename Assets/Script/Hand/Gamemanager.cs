@@ -57,8 +57,11 @@ public class Gamemanager : MonoBehaviour
         }
 
     }
-    public void LOST(int why) 
+    public void Load(int why) 
     {
-    
+    State.Instance.cause = why;
+    if(why==0)State.Instance.won = true;
+    else State.Instance.won = false;
+        State.Instance.day = Hand.stage;
     }
 }

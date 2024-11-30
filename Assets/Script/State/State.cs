@@ -12,7 +12,8 @@ public class State : MonoBehaviour
     public bool endless;
     public int day;
     public int score;
-    public int Name;
+    public string Name;
+    public int Score; 
     private void Awake()
     {
         if (_instance != null && _instance != this)
