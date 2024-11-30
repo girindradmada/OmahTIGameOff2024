@@ -26,7 +26,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject[] warningPopUp; //0 employee //1 supervisor //2 cctv
 
     [SerializeField] TextMeshPro topScreenText;
-    int customerIndex;
 
     [SerializeField] TextMeshPro computerMessage;
     [SerializeField] TextMeshPro timerText;
@@ -75,9 +74,6 @@ public class UIManager : MonoBehaviour
         {
             drugOrderAmount[i] = 0;
         }
-
-        customerIndex = -1;
-        nextTopScreenText();
     }
 
     public void creditUpdate(float scoreUpdate)
@@ -100,25 +96,22 @@ public class UIManager : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         Destroy(popUp);
     }
-
-    [ContextMenu("debug next")]
-    public void nextTopScreenText()
+    public void nextTopScreenText(Customer cus)
     {
-        customerIndex++;
-        topScreenText.text = gamemanager.CustomerScripO.cust[customerIndex].name + "\n\n";
+        topScreenText.text = cus.name + "\n\n";
         
        for(int i = 0; i < listOfItems.Length; i++)
         {
-            if (gamemanager.CustomerScripO.cust[customerIndex].items[i] > 0)
+            if (cus.items[i] > 0)
             {
-                if (gamemanager.CustomerScripO.cust[customerIndex].items[i] > 1)
+                if (cus.items[i] > 1)
                 {
-                    topScreenText.text += gamemanager.CustomerScripO.cust[customerIndex].items[i].ToString() + " ";
+                    topScreenText.text += cus.items[i].ToString() + " ";
                 }
 
                 topScreenText.text += listOfItems[i].TheName;
-
-                if (gamemanager.CustomerScripO.cust[customerIndex].items[i + 1] > 0)
+                if (i<listOfItems.Length-1)
+                if (cus.items[i + 1] > 0)
                 {
                     topScreenText.text += ", ";
                 }
@@ -150,6 +143,7 @@ public class UIManager : MonoBehaviour
         {
             yield return new WaitForSeconds(1);
             timerValue--;
+            if (timerValue <= 0) Hand.Instance.NewDay();
             timerText.text = timerValue.ToString();
         }
     }
@@ -163,17 +157,13 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void dayChange()
+    public void dayChange(int day)
     {
-        int current = (int) dayText.text[dayText.text.Length - 1];
-        current += 1;
-        dayText.text = "Day " + current.ToString();
+        dayText.text = "Day " + day.ToString();
     }
 
-    public void addScore(int add)
+    public void SetScore(int add)
     {
-        int current = int.Parse(scoreText.text);
-        current += add;
-        scoreText.text = "Score: " + current.ToString();
+        scoreText.text = add.ToString();
     }
 }

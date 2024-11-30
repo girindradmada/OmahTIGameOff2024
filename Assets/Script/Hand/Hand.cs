@@ -25,6 +25,7 @@ public class Hand : MonoBehaviour
     [SerializeField]Loader loader;
     [SerializeField] int emplo;
     [SerializeField] int cctv;
+    [SerializeField] drugClientsHandler Nlist;
     public bool done=false;
     public int stage=1;
     public static Hand Instance { get { return _instance; } }
@@ -49,8 +50,9 @@ public class Hand : MonoBehaviour
             jatuh[i]=Instantiate(jat,transform);
         }
         OnHand.SetActive(false);
-        stage = -1;
+        stage = 0;
         NewDay();
+        SoundManager.Instance.ChangeBGM(1);
     }
     public void NewDay() 
     {
@@ -58,6 +60,7 @@ public class Hand : MonoBehaviour
         if (is_endless) 
         { Load(); stage++; } 
         else { StageLoad();}
+        UIManager.Instance.nextTopScreenText(customers[current]);
         
     }
     private void OnDestroy()
@@ -122,6 +125,7 @@ public class Hand : MonoBehaviour
         Gamemanager.Instance.WHandler.Set(emplo, cctv);
         StartCoroutine(wait(customers));
         UIManager.Instance.startTimer(169 + stage * 3);
+        Nlist.getNCustomers(Ncustomers);
     }
     void StageLoad() 
     {
@@ -138,7 +142,8 @@ public class Hand : MonoBehaviour
         if (current +1 < customers.Length)
         {
             current = current + 1;
-        }
+                UIManager.Instance.nextTopScreenText(customers[current]);
+            }
         else 
         {
             done = true;

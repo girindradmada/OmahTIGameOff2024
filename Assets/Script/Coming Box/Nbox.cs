@@ -177,7 +177,7 @@ public class Nbox : MonoBehaviour
                         T.OpenBox();
                     }
                 }else
-                if (hit.collider.TryGetComponent<Nitem>(out Nitem A))
+                if (hit.collider.TryGetComponent<IQueue>(out IQueue A))
                 {
                     A.GotClick();
                 }
@@ -194,16 +194,17 @@ public class Nbox : MonoBehaviour
                     Hand.Instance.HandleJatuh(ou);
                     Gamemanager.Instance.SuperViser.GetNote();
                     }
-                    else if (dropped) 
+                    else if (!dropped) 
                     {
                     Hand.Instance.HandleJatuh(ou);
                     iteminq--;
                     dropped = true;
                     drop_time = 3;
-                    if (Gamemanager.Instance.is_seen) 
+                    if (Gamemanager.Instance.is_seen&&!Gamemanager.Instance.isunder) 
                     {
                     UIManager.Instance.susUpdate(10);
-                    }
+                            SoundManager.Instance.PlaySFX(7 + Gamemanager.Instance.rand.Next(2));
+                        }
                     }
 
             

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Nitem : MonoBehaviour
+public class Nitem : MonoBehaviour,IQueue
 {
     [SerializeField] Item item;
     [SerializeField] NBoxIn NBoxIn;
@@ -29,6 +29,7 @@ public class Nitem : MonoBehaviour
     {
         if (Gamemanager.Instance.Nbox.iteminq < 3)
         {
+            SoundManager.Instance.PlaySFX(2+Gamemanager.Instance.rand.Next(2));
             Gamemanager.Instance.Nbox.NitemList.Enqueue(item);
             NBoxIn.Nitems[item.ItemInt]--;
             Gamemanager.Instance.Nbox.iteminq++;
@@ -39,6 +40,10 @@ public class Nitem : MonoBehaviour
             }
         }
         else
-        UIManager.Instance.showMessage("Your Hand Is Full");//call ui
+        {
+            SoundManager.Instance.PlaySFX(13);
+        UIManager.Instance.showMessage("Your Hand Is Full");//call ui        
+        }
+
     }
 }

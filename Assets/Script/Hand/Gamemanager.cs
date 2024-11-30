@@ -64,6 +64,9 @@ public class Gamemanager : MonoBehaviour
             UIManager.Instance.creditUpdate(-imistake*3);
             score += (Hand.customers.Length-imistake) * Hand.stage * 5;
             score += (Hand.Ncustomers.Length-Nmistake) * Hand.stage * 10;
+            UIManager.Instance.dayChange(Hand.stage+1);
+            UIManager.Instance.SetScore(score);
+            Hand.NewDay();
         }
     }
     private void FixedUpdate()

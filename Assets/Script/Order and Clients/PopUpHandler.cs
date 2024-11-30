@@ -4,7 +4,7 @@ public class PopUpHandler : MonoBehaviour
 {
     [SerializeField] GameObject screen;
     [SerializeField] GameObject lookButton;
-
+    [SerializeField] bool paper;
     private void Update()
     {
         handleClick();
@@ -31,6 +31,10 @@ public class PopUpHandler : MonoBehaviour
 
     public void screenPopUp()
     {
+        if (paper) 
+        {
+            SoundManager.Instance.PlaySFX(10);
+        }else SoundManager.Instance.PlaySFX(1);
         screen.SetActive(true);
         lookButton.SetActive(false);
     }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68bc3ff5e80ece74eb2c24817f26586f, type: 3}
   m_Name: item
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 5008a19ee810fe44294297680e019016, type: 3}
+  sprite: {fileID: 21300000, guid: e92ef98434c147248a380d35d7804920, type: 3}
   ItemInt: 0
   TheName: Pepsi
   Normal: 0

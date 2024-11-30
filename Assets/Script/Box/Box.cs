@@ -20,6 +20,7 @@ public class Box : MonoBehaviour
 
     public void Close ()
     {
+        SoundManager.Instance.PlaySFX(0);
         loading = true;
     R.sprite = close;
     up = true;

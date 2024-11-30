@@ -11,8 +11,8 @@ public class State : MonoBehaviour
     public int cause;
     public bool endless;
     public int day;
+    public string Playername;
     public int score;
-    public int Score;
     public float BGMv;
     public float SFXv;
     private void Awake()

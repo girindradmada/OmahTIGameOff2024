@@ -34,28 +34,26 @@ public class drugClientsHandler : MonoBehaviour
     private void Start()
     {
         listText = this.GetComponent<TextMeshProUGUI>();
-        getNCustomers();
     }
 
     [ContextMenu("try debug")]
-    public void getNCustomers()
+    public void getNCustomers(Customer[] Ncust)
     {
-        for (int i = 0; i < _gameManager.CustomerScripO.Ncust.Length; i++)
+        for (int i = 0; i < Ncust.Length; i++)
         {
-            listText.text += _gameManager.CustomerScripO.Ncust[i].name + ": ";
-
+            listText.text += Ncust[i].name + ": ";
+            
             for (int j = 0; j < _uiManager.listOfDrugs.Length; j++)
             {
-                if (_gameManager.CustomerScripO.Ncust[i].Nitems[j] > 0)
+                if (Ncust[i].Nitems[j] > 0)
                 {
-                    if (_gameManager.CustomerScripO.Ncust[i].Nitems[j] > 1)
+                    if (Ncust[i].Nitems[j] > 1)
                     {
-                        listText.text += _gameManager.CustomerScripO.Ncust[i].Nitems[j].ToString() + " ";
+                        listText.text += Ncust[i].Nitems[j].ToString() + " ";
                     }
-
                     listText.text += _uiManager.listOfDrugs[j].TheName;
-
-                    if (_gameManager.CustomerScripO.Ncust[i].Nitems[j + 1] > 0)
+                    if (j < Ncust[i].Nitems.Length-1)
+                    if (Ncust[i].Nitems[j + 1] > 0)
                     {
                         listText.text += ", ";
                     }
