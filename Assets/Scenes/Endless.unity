@@ -606,15 +606,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '* The mafia orders:
-
-    1. look under the table, there''s a note there
-
-    2.
-    make sure you cross check the clients name, BEFORE slipping it
-
-    3. DO NOT
-    MAKE A MISTAKE'
+  m_text: GOOD Luck
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b0e3d3ff697e1954e8c9f178464a8d1a, type: 2}
   m_sharedMaterial: {fileID: -4649116720454284054, guid: b0e3d3ff697e1954e8c9f178464a8d1a, type: 2}
@@ -882,7 +874,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &110315807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -912,10 +904,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 1
+  m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -8476,15 +8468,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Packaging For Dummies
-
-
-    1. Put the correct items in the box according
-    to the screen
-
-    2. Press [Space] to ship the item
-
-    3. Now get to work!!!'
+  m_text: " You are on your own\nIt never stop \ndont make mistake\nif the timer
+    off its day over"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b0e3d3ff697e1954e8c9f178464a8d1a, type: 2}
   m_sharedMaterial: {fileID: -4649116720454284054, guid: b0e3d3ff697e1954e8c9f178464a8d1a, type: 2}
@@ -9656,7 +9641,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -12072,7 +12057,7 @@ MonoBehaviour:
   jat: {fileID: 4137069330954358729, guid: d1d7a4b2e0d21754397a8d7839d3aaf1, type: 3}
   at: 0
   current: 0
-  is_endless: 0
+  is_endless: 1
   hand: {fileID: 0}
   OnHand: {fileID: 784044346}
   HandRenderer: {fileID: 784044347}
@@ -12498,7 +12483,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3478990911193182373, guid: 714f0043b84b6754d8a7c846d9eb0b2b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5078340566762916866, guid: 714f0043b84b6754d8a7c846d9eb0b2b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12975,6 +12960,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7159346236883962058, guid: 0b34c43843dfcc74abf0a47b80b08836, type: 3}
+      propertyPath: waitTime
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13071,6 +13060,10 @@ PrefabInstance:
     - target: {fileID: 5484446363022279289, guid: 2873e845a2373534785883fceaefc0e0, type: 3}
       propertyPath: m_Name
       value: Credit Bar
+      objectReference: {fileID: 0}
+    - target: {fileID: 5484446363022279289, guid: 2873e845a2373534785883fceaefc0e0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -6,7 +6,7 @@ public class StageLoad : MonoBehaviour
 {
     public void LoadStage() 
     {
-        State.Instance.day = 0;
+        State.Instance.day = 1;
         State.Instance.endless = false;
         SceneManager.LoadScene("Stage1");
     }
