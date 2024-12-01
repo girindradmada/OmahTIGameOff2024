@@ -40,6 +40,7 @@ public class Nbox : MonoBehaviour
     [SerializeField] float In_cooldown=0;
     [SerializeField] float drop_time;
     [SerializeField] float SUS;
+    [SerializeField]bool cantake = true;
     int top;
     bool cooldown;
     bool dropped;
@@ -135,7 +136,7 @@ public class Nbox : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             RaycastHit2D hit = Physics2D.Raycast(Pos - Vector3.back * 2, Pos + Vector3.back * 2);
-            if (hit)
+            if (hit&&cantake)
             {
                 if (hit.collider.TryGetComponent<NBoxIn>(out NBoxIn T))
                 {
@@ -184,7 +185,7 @@ public class Nbox : MonoBehaviour
             }
             
         }
-        if (Input.GetButtonDown("Fire2")) 
+        if (Input.GetButton("Fire2")&&cantake) 
         {
             if(drop_time<=0)
             if (NitemList.TryDequeue(out Item ou)) 
@@ -210,6 +211,11 @@ public class Nbox : MonoBehaviour
             
             }
         }
+
+    }        
+    public void take(bool a)
+    {
+    cantake = a;
     }
     public void GOOn(Sprite s,NBoxIn a)
     {

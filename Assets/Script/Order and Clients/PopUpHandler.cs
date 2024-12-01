@@ -37,11 +37,15 @@ public class PopUpHandler : MonoBehaviour
         }else SoundManager.Instance.PlaySFX(1);
         screen.SetActive(true);
         lookButton.SetActive(false);
+        Hand.Instance.take(false);
+        Gamemanager.Instance.Nbox.take(false);
     }
 
     public void exitScreen()
     {
         screen.SetActive(false);
         lookButton.SetActive(true);
+        Hand.Instance.take(true);
+        Gamemanager.Instance.Nbox.take(true);
     }
 }
