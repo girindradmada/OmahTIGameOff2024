@@ -27,9 +27,9 @@ public class SOCust : ScriptableObject
             }
         }
     }
-    public Customer[] GetCustomer(bool N) 
+    public Customer[] GetCustomer(bool test) 
     {
-        if (N) { return cust; }
+        if (test) { return cust; }
         else return Ncust;
     }
 }
