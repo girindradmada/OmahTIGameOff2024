@@ -2029,7 +2029,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ec38b33bb225b414da5d7c3d043274d9, type: 3}
   - {fileID: 8300000, guid: d92ccfc6eeaefd74999418de6e42eae4, type: 3}
   - {fileID: 8300000, guid: 3f53a81e9100e1e41aca791ae90b6709, type: 3}
-  pitch: 0
+  pitch: 1
 --- !u!1 &539807762
 GameObject:
   m_ObjectHideFlags: 0
@@ -4481,7 +4481,7 @@ GameObject:
   - component: {fileID: 1296834361}
   - component: {fileID: 1296834360}
   - component: {fileID: 1296834359}
-  - component: {fileID: 1296834358}
+  - component: {fileID: 1296834362}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -4509,21 +4509,6 @@ RectTransform:
   m_AnchoredPosition: {x: 612, y: -333}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1296834358
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1296834356}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a54c58097cbd1a1438d4270ceafc025f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  screen: {fileID: 738902105}
-  lookButton: {fileID: 1557066555}
-  paper: 0
 --- !u!114 &1296834359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4568,8 +4553,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1296834358}
-        m_TargetAssemblyTypeName: PopUpHandler, Assembly-CSharp
+      - m_Target: {fileID: 1296834362}
+        m_TargetAssemblyTypeName: CSa, Assembly-CSharp
         m_MethodName: screenPopUp
         m_Mode: 1
         m_Arguments:
@@ -4618,6 +4603,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1296834356}
   m_CullTransparentMesh: 1
+--- !u!114 &1296834362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296834356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1448e53765da0d46b321170e1330995, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screen: {fileID: 738902105}
+  lookButton: {fileID: 1557066555}
 --- !u!1 &1380334429
 GameObject:
   m_ObjectHideFlags: 0
