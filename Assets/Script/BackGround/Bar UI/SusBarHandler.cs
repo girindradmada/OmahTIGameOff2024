@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class SusBarHandler : MonoBehaviour
 {
     [SerializeField] Image bar;
-    [SerializeField] float waitTime = 2;
+    [SerializeField] float waitTime = 5;
 
     private Coroutine susCoroutine;
     [SerializeField] bool waitOver;
