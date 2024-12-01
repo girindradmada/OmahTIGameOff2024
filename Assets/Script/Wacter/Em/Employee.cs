@@ -50,8 +50,16 @@ public class Employee : MonoBehaviour
             {
                 startwalking = true;
                 Vector3 po = transform.position;
-                if (FromLeft) po.x = -10;
-                else po.x = 10;
+                if (FromLeft)
+                {
+                    transform.localScale = Vector3.one;
+                    po.x = -10;
+                }
+                else
+                {
+                    po.x = 10;
+                    transform.localScale = Vector3.one - 2 * Vector3.right;
+                }
                 po.y = 0.7f;
                 transform.position = po;
                 RD.sprite = walking;

@@ -606,15 +606,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '* The mafia orders:
-
-    1. look under the table, there''s a note there
-
-    2.
-    make sure you cross check the clients name, BEFORE slipping it
-
-    3. DO NOT
-    MAKE A MISTAKE'
+  m_text: be careful who know when the cctv is gonna go active
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b0e3d3ff697e1954e8c9f178464a8d1a, type: 2}
   m_sharedMaterial: {fileID: -4649116720454284054, guid: b0e3d3ff697e1954e8c9f178464a8d1a, type: 2}
@@ -912,10 +904,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 1
+  m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -8476,15 +8468,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Packaging For Dummies
-
-
-    1. Put the correct items in the box according
-    to the screen
-
-    2. Press [Space] to ship the item
-
-    3. Now get to work!!!'
+  m_text: "The higher ups are starting to get suspicious of your activities. They\u2019ve
+    installed cameras around the building to curb the selling of your products."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b0e3d3ff697e1954e8c9f178464a8d1a, type: 2}
   m_sharedMaterial: {fileID: -4649116720454284054, guid: b0e3d3ff697e1954e8c9f178464a8d1a, type: 2}
@@ -9656,7 +9641,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -12048,7 +12033,7 @@ MonoBehaviour:
   imistake: 0
   Nmistake: 0
   Nbox: {fileID: 1179555469}
-  CustomerScripO: {fileID: 11400000, guid: 8abccf714c47eaa4ba768a30a24f8028, type: 2}
+  CustomerScripO: {fileID: 11400000, guid: af7ae9190a3fa2a4395373c421dbd2db, type: 2}
   is_seen: 0
   seen_time: 0
   WHandler: {fileID: 1998977371}
@@ -12081,8 +12066,8 @@ MonoBehaviour:
   Ntype: 5
   itype: 8
   loader: {fileID: 1998977372}
-  emplo: 0
-  cctv: 0
+  emplo: 2
+  cctv: 1
   Nlist: {fileID: 1583725527}
   done: 0
   stage: 1

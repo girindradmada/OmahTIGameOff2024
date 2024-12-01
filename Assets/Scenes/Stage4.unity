@@ -606,15 +606,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '* The mafia orders:
-
-    1. look under the table, there''s a note there
-
-    2.
-    make sure you cross check the clients name, BEFORE slipping it
-
-    3. DO NOT
-    MAKE A MISTAKE'
+  m_text: '"THEY" has provided you a fake note to throw them off.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b0e3d3ff697e1954e8c9f178464a8d1a, type: 2}
   m_sharedMaterial: {fileID: -4649116720454284054, guid: b0e3d3ff697e1954e8c9f178464a8d1a, type: 2}
@@ -912,10 +904,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 1
+  m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -6570,6 +6562,7 @@ GameObject:
   - component: {fileID: 1189111242}
   - component: {fileID: 1189111241}
   - component: {fileID: 1189111239}
+  - component: {fileID: 1189111240}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -6641,6 +6634,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pla: {fileID: 1890863141}
+--- !u!114 &1189111240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1189111237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc23c6ff1027cff46ac0b69179c77ab0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetWidth: 1920
+  targetHeight: 1080
+  dynamicMaxWidth: 2560
+  dynamicMaxHeight: 1440
+  useDynamicWidth: 0
+  useDynamicHeight: 0
 --- !u!114 &1189111241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8476,15 +8487,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Packaging For Dummies
-
-
-    1. Put the correct items in the box according
-    to the screen
-
-    2. Press [Space] to ship the item
-
-    3. Now get to work!!!'
+  m_text: 'Security is ramping up even further. Your supervisor is actively roaming
+    around the building to try and catch the perpetrator in the act. '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b0e3d3ff697e1954e8c9f178464a8d1a, type: 2}
   m_sharedMaterial: {fileID: -4649116720454284054, guid: b0e3d3ff697e1954e8c9f178464a8d1a, type: 2}
@@ -9656,7 +9660,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -12081,8 +12085,8 @@ MonoBehaviour:
   Ntype: 5
   itype: 8
   loader: {fileID: 1998977372}
-  emplo: 0
-  cctv: 0
+  emplo: 2
+  cctv: 2
   Nlist: {fileID: 1583725527}
   done: 0
   stage: 1
@@ -12498,7 +12502,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3478990911193182373, guid: 714f0043b84b6754d8a7c846d9eb0b2b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5078340566762916866, guid: 714f0043b84b6754d8a7c846d9eb0b2b, type: 3}
       propertyPath: m_LocalPosition.x

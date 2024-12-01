@@ -57,7 +57,7 @@ public class Hand : MonoBehaviour
     {
         current = 0;
         if (is_endless) 
-        { Load(); stage++; } 
+        { Load(); stage++; UIManager.Instance.dayChange(stage); } 
         else { StageLoad();}
         UIManager.Instance.nextTopScreenText(customers[current]);
         
