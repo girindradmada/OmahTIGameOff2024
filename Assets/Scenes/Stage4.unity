@@ -10869,7 +10869,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ' ansnodaoias'
+  m_text: ' '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c8ba176e52052b14e9ca63b736604d8a, type: 2}
   m_sharedMaterial: {fileID: -4884162341308617129, guid: c8ba176e52052b14e9ca63b736604d8a, type: 2}
