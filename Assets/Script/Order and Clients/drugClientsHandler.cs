@@ -36,7 +36,6 @@ public class drugClientsHandler : MonoBehaviour
         listText = this.GetComponent<TextMeshProUGUI>();
     }
 
-    [ContextMenu("try debug")]
     public void getNCustomers(Customer[] Ncust)
     {
         for (int i = 0; i < Ncust.Length; i++)

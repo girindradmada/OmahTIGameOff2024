@@ -133,6 +133,7 @@ public class Hand : MonoBehaviour
         customers = Gamemanager.Instance.CustomerScripO.GetCustomer(false);
         Ncustomers = Gamemanager.Instance.CustomerScripO.GetCustomer(true);
         Gamemanager.Instance.WHandler.Set(emplo, cctv);
+        Nlist.getNCustomers(Ncustomers);
     }
     void HandleClose()
     {
