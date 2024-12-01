@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68bc3ff5e80ece74eb2c24817f26586f, type: 3}
   m_Name: item 2
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: 6afef692484b4d24fa6047cca7189bd7, type: 3}
+  sprite: {fileID: 21300000, guid: ae91cb341beeb2a43a1de919588a0776, type: 3}
   ItemInt: 2
   TheName: Robot
   Normal: 1

@@ -52,7 +52,7 @@ public class Employee : MonoBehaviour
                 Vector3 po = transform.position;
                 if (FromLeft) po.x = -10;
                 else po.x = 10;
-                po.y = 0;
+                po.y = 0.7f;
                 transform.position = po;
                 RD.sprite = walking;
             }

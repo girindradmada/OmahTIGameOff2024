@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68bc3ff5e80ece74eb2c24817f26586f, type: 3}
   m_Name: item
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: f8b02a2592d30b446ac0684d87ced31a, type: 3}
+  sprite: {fileID: 21300000, guid: 03238fd6ac3d35243ba5a08678141f9f, type: 3}
   ItemInt: -1
   TheName: Note
   Normal: 0

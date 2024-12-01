@@ -121,7 +121,7 @@ public class Hand : MonoBehaviour
     {
         loader.Change(10+3*stage/10,5+stage/5,1,1+stage/5,1,1+stage/5);
         emplo=1+stage/3;
-        emplo=1+stage/4;
+        cctv=1+stage/4;
         Gamemanager.Instance.WHandler.Set(emplo, cctv);
         StartCoroutine(wait(customers));
         UIManager.Instance.startTimer(169 + stage * 3);

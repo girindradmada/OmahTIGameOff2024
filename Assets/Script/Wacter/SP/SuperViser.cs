@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -33,7 +34,7 @@ public class SuperViser : MonoBehaviour
         SEE = false;
         HasSee = false;
         startwalking = false;
-        FromLeft = rand.Next(4) %2==1 ;
+        FromLeft = rand.Next(4) % 2 == 1;
         walk = 20 / WalkTime / transform.localScale.x;
         if (!FromLeft) walk = -walk;
         call = false;
@@ -42,14 +43,14 @@ public class SuperViser : MonoBehaviour
     {
         if (!startwalking)
         {
-            WalkAgain -= Time.deltaTime;            
+            WalkAgain -= Time.deltaTime;
             if (WalkAgain <= 0)
             {
                 startwalking = true;
                 Vector3 po = transform.position;
                 if (FromLeft) po.x = -10;
                 else po.x = 10;
-                po.y = 0;
+                po.y = 0.7f;
                 po.z = 0;
                 transform.position = po;
                 RD.sprite = walking;
@@ -103,7 +104,7 @@ public class SuperViser : MonoBehaviour
             Randomize();
         }
     }
-    public void GetNote() 
+    public void GetNote()
     {
         SoundManager.Instance.PlaySFX(4);
         if (!SEE) return;
@@ -113,7 +114,15 @@ public class SuperViser : MonoBehaviour
     }
     IEnumerator haha()
     {
-    yield return 3;
+        yield return 3;
         SoundManager.Instance.PlaySFX(10);
+    }
+    [ContextMenu("DASDA")]
+    void d() 
+    {
+        if (!SEE) return;
+        HasSee = true;
+        SEE = false;
+        RD.sprite = walking;
     }
 }

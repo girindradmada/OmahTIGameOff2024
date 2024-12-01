@@ -7,6 +7,7 @@ using UnityEngine.XR;
 
 public class SoundManager : MonoBehaviour
 {
+    System.Random m_Random=new System.Random();
     private static SoundManager _instance;
     public static SoundManager Instance { get { return _instance; } }
     [SerializeField] AudioSource BGM;
@@ -38,7 +39,7 @@ public class SoundManager : MonoBehaviour
     }
     public void PlaySFX(int a) 
     {
-    SFX.pitch = 0.9f + (float)Gamemanager.Instance.rand.Next(20) / 100;
+    SFX.pitch = 0.9f + (float)m_Random.Next(20) / 100;
     SFX.clip = SFXs[a];
     SFX.PlayOneShot(SFXs[a]);
     }
